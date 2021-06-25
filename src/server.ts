@@ -1,12 +1,22 @@
 import "reflect-metadata";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
+import cors from "cors";
 
 import { router } from "./routes";
 
 import "./database";
 
 const app = express();
+
+// habilita que outras fontes que não sejam backend consigam acessar a aplicação
+app.use(cors());
+// Caso queira que somente um app ou site acesse seu app, usar desta maneira =>
+// app.use(
+//   cors({
+//     origin: "",
+//   })
+// );
 
 app.use(express.json());
 
